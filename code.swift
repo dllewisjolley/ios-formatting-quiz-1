@@ -16,6 +16,7 @@ class PeriodicTableViewController: UIViewController {
     
     var elementsContoller: ElementsController?
     var selectedElement: Element?
+    var chosenElementView: ElementView!
     
     weak var delegate: PeriodicTableViewControllerDelegate?
     
@@ -57,8 +58,6 @@ class PeriodicTableViewController: UIViewController {
     @IBAction func chooseRandomElement(_ sender: Any){
         let ranElem = elementsContoller.elements.randomElement()
         
-        var chosenElementView:ElementView!
-        
         for e in elementViews {
             if (e.element == ranElem) {
                 chosenElementView = e
@@ -66,13 +65,9 @@ class PeriodicTableViewController: UIViewController {
             }
         }
         
-        
-        
-        
         chosenElementView.isHighlighted =  true
         
-        delegate?.periodicTableViewController(self,
-                                        didSelectElement: ranElem)
+        delegate?.periodicTableViewController(self, didSelectElement: ranElem)
         }
     // No more new additions after this point
 }
